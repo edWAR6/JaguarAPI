@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SGA_DesarrolloModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="SGA_DesarrolloModelStoreContainer">
+          <EntitySet Name="P_Notas" EntityType="SGA_DesarrolloModel.Store.P_Notas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="P_NotasPublicas" EntityType="SGA_DesarrolloModel.Store.P_NotasPublicas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="P_Personas" EntityType="SGA_DesarrolloModel.Store.P_Personas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="R_RegistroNotas" EntityType="SGA_DesarrolloModel.Store.R_RegistroNotas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VR_Rendimiento_A_Academ" EntityType="SGA_DesarrolloModel.Store.VR_Rendimiento_A_Academ" store:Type="Views" store:Schema="dbo" store:Name="VR_Rendimiento_A_Academ">
+            <DefiningQuery>SELECT 
+      [VR_Rendimiento_A_Academ].[Estudiante] AS [Estudiante], 
+      [VR_Rendimiento_A_Academ].[Carrera] AS [Carrera], 
+      [VR_Rendimiento_A_Academ].[A_Adem] AS [A_Adem], 
+      [VR_Rendimiento_A_Academ].[CursosGanados] AS [CursosGanados], 
+      [VR_Rendimiento_A_Academ].[CreditosGanados] AS [CreditosGanados], 
+      [VR_Rendimiento_A_Academ].[CursosReprobados] AS [CursosReprobados], 
+      [VR_Rendimiento_A_Academ].[CursosPerdidos] AS [CursosPerdidos], 
+      [VR_Rendimiento_A_Academ].[zCreditosPP] AS [zCreditosPP], 
+      [VR_Rendimiento_A_Academ].[PP] AS [PP], 
+      [VR_Rendimiento_A_Academ].[Creditos] AS [Creditos], 
+      [VR_Rendimiento_A_Academ].[CursosPosiblesRecuperaciones] AS [CursosPosiblesRecuperaciones], 
+      [VR_Rendimiento_A_Academ].[CursosParaRecuperacion] AS [CursosParaRecuperacion], 
+      [VR_Rendimiento_A_Academ].[CursosRecuperados] AS [CursosRecuperados], 
+      [VR_Rendimiento_A_Academ].[CursosRetirados] AS [CursosRetirados], 
+      [VR_Rendimiento_A_Academ].[CursosIncompletos] AS [CursosIncompletos], 
+      [VR_Rendimiento_A_Academ].[CursosMatriculados] AS [CursosMatriculados]
+      FROM [dbo].[VR_Rendimiento_A_Academ] AS [VR_Rendimiento_A_Academ]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VR_Rendimiento_Periodos" EntityType="SGA_DesarrolloModel.Store.VR_Rendimiento_Periodos" store:Type="Views" store:Schema="dbo" store:Name="VR_Rendimiento_Periodos">
+            <DefiningQuery>SELECT 
+      [VR_Rendimiento_Periodos].[A_Adem] AS [A_Adem], 
+      [VR_Rendimiento_Periodos].[Trimestre] AS [Trimestre], 
+      [VR_Rendimiento_Periodos].[Estudiante] AS [Estudiante], 
+      [VR_Rendimiento_Periodos].[Carrera] AS [Carrera], 
+      [VR_Rendimiento_Periodos].[CursosReprobados] AS [CursosReprobados], 
+      [VR_Rendimiento_Periodos].[CursosGanados] AS [CursosGanados], 
+      [VR_Rendimiento_Periodos].[ZPuntosPP] AS [ZPuntosPP], 
+      [VR_Rendimiento_Periodos].[zCreditosPP] AS [zCreditosPP], 
+      [VR_Rendimiento_Periodos].[PP] AS [PP], 
+      [VR_Rendimiento_Periodos].[CreditosGanados] AS [CreditosGanados], 
+      [VR_Rendimiento_Periodos].[CursosRecuperados] AS [CursosRecuperados], 
+      [VR_Rendimiento_Periodos].[CursosPosiblesRecuperaciones] AS [CursosPosiblesRecuperaciones], 
+      [VR_Rendimiento_Periodos].[CursosParaRecuperacion] AS [CursosParaRecuperacion], 
+      [VR_Rendimiento_Periodos].[CursosPerdidos] AS [CursosPerdidos], 
+      [VR_Rendimiento_Periodos].[CursosRetirados] AS [CursosRetirados], 
+      [VR_Rendimiento_Periodos].[CursosIncompletos] AS [CursosIncompletos], 
+      [VR_Rendimiento_Periodos].[CursosMatriculados] AS [CursosMatriculados], 
+      [VR_Rendimiento_Periodos].[CursosPendientes] AS [CursosPendientes], 
+      [VR_Rendimiento_Periodos].[CursosNoRecuperados] AS [CursosNoRecuperados], 
+      [VR_Rendimiento_Periodos].[CursosNoVanRecuperacion] AS [CursosNoVanRecuperacion], 
+      [VR_Rendimiento_Periodos].[CursosAprobados] AS [CursosAprobados]
+      FROM [dbo].[VR_Rendimiento_Periodos] AS [VR_Rendimiento_Periodos]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_P_Notas_P_Personas" Association="SGA_DesarrolloModel.Store.FK_P_Notas_P_Personas">
+            <End Role="P_Personas" EntitySet="P_Personas" />
+            <End Role="P_Notas" EntitySet="P_Notas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="P_Notas">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+            <PropertyRef Name="idNota" />
+          </Key>
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="idNota" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TipoNota" Type="varchar" MaxLength="4" />
+          <Property Name="Area" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="FechaNota" Type="datetime" Nullable="false" />
+          <Property Name="Nota" Type="text" Nullable="false" />
+          <Property Name="FechaRecordatorio" Type="datetime" />
+          <Property Name="usuario" Type="varchar" MaxLength="15" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Activa" Type="bit" />
+        </EntityType>
+        <EntityType Name="P_NotasPublicas">
+          <Key>
+            <PropertyRef Name="idNotasPublicas" />
+          </Key>
+          <Property Name="idNotasPublicas" Type="int" Nullable="false" />
+          <Property Name="FechaNota" Type="datetime" Nullable="false" />
+          <Property Name="Nota" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FechaRecordatorio" Type="datetime" />
+          <Property Name="Activa" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="P_Personas">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="IdPersona" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Fallecido" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="Identificacion" Type="nvarchar" MaxLength="25" />
+          <Property Name="Pasaporte" Type="nvarchar" MaxLength="30" />
+          <Property Name="login_red" Type="varchar" MaxLength="50" />
+          <Property Name="Prefix" Type="varchar" MaxLength="15" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="20" />
+          <Property Name="SNombre" Type="nvarchar" MaxLength="20" />
+          <Property Name="Apellidos" Type="nvarchar" MaxLength="30" />
+          <Property Name="Genero" Type="char" MaxLength="1" />
+          <Property Name="GrupoEtnico" Type="varchar" MaxLength="6" />
+          <Property Name="Fecha_Nacimiento" Type="datetime" />
+          <Property Name="Pais_Nacimiento" Type="nvarchar" MaxLength="6" />
+          <Property Name="zona" Type="varchar" MaxLength="4" />
+          <Property Name="Direccion_Oficial" Type="char" MaxLength="4" />
+          <Property Name="EstadoCivil" Type="varchar" MaxLength="4" />
+          <Property Name="Sobrenombre" Type="nvarchar" MaxLength="20" />
+          <Property Name="IdiomaProcedencia" Type="varchar" MaxLength="6" />
+          <Property Name="LenguaMaterna" Type="varchar" MaxLength="6" />
+          <Property Name="NHijos" Type="smallint" />
+          <Property Name="PEOPLE_CODE_ID" Type="char" MaxLength="10" />
+          <Property Name="GOVERMENT_ID" Type="char" MaxLength="9" />
+          <Property Name="PREVIOUS_ID" Type="char" MaxLength="9" />
+          <Property Name="usuario" Type="varchar" MaxLength="15" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Escolaridad" Type="int" Nullable="false" />
+          <Property Name="NombreCompleto" Type="nvarchar" MaxLength="72" StoreGeneratedPattern="Computed" />
+          <Property Name="ApellidoNombre" Type="nvarchar" Nullable="false" MaxLength="73" StoreGeneratedPattern="Computed" />
+          <Property Name="Nacionalidad" Type="nvarchar" MaxLength="6" />
+          <Property Name="Residente" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="R_RegistroNotas">
+          <Key>
+            <PropertyRef Name="A_Adem" />
+            <PropertyRef Name="Trimestre" />
+            <PropertyRef Name="id_curso" />
+            <PropertyRef Name="Subtipo" />
+            <PropertyRef Name="seccion" />
+            <PropertyRef Name="Estudiante" />
+            <PropertyRef Name="Carrera" />
+          </Key>
+          <Property Name="A_Adem" Type="int" Nullable="false" />
+          <Property Name="Trimestre" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="id_curso" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="Subtipo" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="seccion" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="Estudiante" Type="int" Nullable="false" />
+          <Property Name="Carrera" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="A_Carrera" Type="int" />
+          <Property Name="Creditos" Type="numeric" Nullable="false" Precision="6" Scale="3" />
+          <Property Name="NotaFinal" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="Nota_Num" Type="numeric" Nullable="false" Precision="8" Scale="4" />
+          <Property Name="F_Lim_Icomp" Type="datetime" />
+          <Property Name="PP" Type="numeric" Nullable="false" Precision="6" Scale="3" />
+          <Property Name="NotaMedioP" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="Estado" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="CalculoPP" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="FechaEstado" Type="datetime" />
+          <Property Name="Observaciones" Type="varchar(max)" />
+          <Property Name="Estado_Recuperacion" Type="char" MaxLength="1" />
+          <Property Name="Calif_Examen_Recup" Type="numeric" Precision="8" Scale="4" />
+          <Property Name="usuario_i" Type="varchar" MaxLength="15" />
+          <Property Name="Fecha_i" Type="datetime" />
+          <Property Name="usuario_act" Type="varchar" MaxLength="15" />
+          <Property Name="Fecha_act" Type="datetime" />
+          <Property Name="Fecha_CreaEv" Type="datetime" />
+          <Property Name="Fecha_HabilitEv" Type="datetime" />
+          <Property Name="Fecha_FinEv" Type="datetime" />
+          <Property Name="EstadoEv" Type="char" MaxLength="1" />
+          <Property Name="IdControl" Type="bigint" />
+          <Property Name="CreditosGanados" Type="numeric" Nullable="false" Precision="6" Scale="3" StoreGeneratedPattern="Computed" />
+          <Property Name="Perdio" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="Recuperado" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="PosibleRecuperacion" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="ParaRecuperacion" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="PerdidaDefinitiva" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="RetiroOficial" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="PuntosPP" Type="numeric" Precision="15" Scale="7" StoreGeneratedPattern="Computed" />
+          <Property Name="CreditosPP" Type="numeric" Nullable="false" Precision="6" Scale="3" StoreGeneratedPattern="Computed" />
+          <Property Name="Incompleto" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="Matriculado" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="MedioPeriodo" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="NoRecuperado" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="NoRecuperacion" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="Aprobado" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="Gano" Type="int" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="TrackingId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'SGA_Desarrollo.dbo.VR_Rendimiento_A_Academ' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="VR_Rendimiento_A_Academ">
+          <Key>
+            <PropertyRef Name="Estudiante" />
+            <PropertyRef Name="Carrera" />
+            <PropertyRef Name="A_Adem" />
+          </Key>
+          <Property Name="Estudiante" Type="int" Nullable="false" />
+          <Property Name="Carrera" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="A_Adem" Type="int" Nullable="false" />
+          <Property Name="CursosGanados" Type="int" />
+          <Property Name="CreditosGanados" Type="numeric" Precision="38" Scale="3" />
+          <Property Name="CursosReprobados" Type="int" />
+          <Property Name="CursosPerdidos" Type="int" />
+          <Property Name="zCreditosPP" Type="numeric" Precision="38" Scale="3" />
+          <Property Name="PP" Type="numeric" Precision="38" Scale="6" />
+          <Property Name="Creditos" Type="numeric" Precision="38" Scale="3" />
+          <Property Name="CursosPosiblesRecuperaciones" Type="int" />
+          <Property Name="CursosParaRecuperacion" Type="int" />
+          <Property Name="CursosRecuperados" Type="int" />
+          <Property Name="CursosRetirados" Type="int" />
+          <Property Name="CursosIncompletos" Type="int" />
+          <Property Name="CursosMatriculados" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'SGA_Desarrollo.dbo.VR_Rendimiento_Periodos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="VR_Rendimiento_Periodos">
+          <Key>
+            <PropertyRef Name="A_Adem" />
+            <PropertyRef Name="Trimestre" />
+            <PropertyRef Name="Estudiante" />
+            <PropertyRef Name="Carrera" />
+          </Key>
+          <Property Name="A_Adem" Type="int" Nullable="false" />
+          <Property Name="Trimestre" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Estudiante" Type="int" Nullable="false" />
+          <Property Name="Carrera" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="CursosReprobados" Type="int" />
+          <Property Name="CursosGanados" Type="int" />
+          <Property Name="ZPuntosPP" Type="numeric" Precision="38" Scale="7" />
+          <Property Name="zCreditosPP" Type="numeric" Precision="38" Scale="3" />
+          <Property Name="PP" Type="numeric" Precision="38" Scale="6" />
+          <Property Name="CreditosGanados" Type="numeric" Precision="38" Scale="3" />
+          <Property Name="CursosRecuperados" Type="int" />
+          <Property Name="CursosPosiblesRecuperaciones" Type="int" />
+          <Property Name="CursosParaRecuperacion" Type="int" />
+          <Property Name="CursosPerdidos" Type="int" />
+          <Property Name="CursosRetirados" Type="int" />
+          <Property Name="CursosIncompletos" Type="int" />
+          <Property Name="CursosMatriculados" Type="int" />
+          <Property Name="CursosPendientes" Type="int" />
+          <Property Name="CursosNoRecuperados" Type="int" />
+          <Property Name="CursosNoVanRecuperacion" Type="int" />
+          <Property Name="CursosAprobados" Type="int" />
+        </EntityType>
+        <Association Name="FK_P_Notas_P_Personas">
+          <End Role="P_Personas" Type="SGA_DesarrolloModel.Store.P_Personas" Multiplicity="1" />
+          <End Role="P_Notas" Type="SGA_DesarrolloModel.Store.P_Notas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="P_Personas">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="P_Notas">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SGA_DesarrolloModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="P_Personas" EntityType="SGA_DesarrolloModel.P_Personas" />
+          <EntitySet Name="P_Notas" EntityType="SGA_DesarrolloModel.P_Notas" />
+          <EntitySet Name="R_RegistroNotas" EntityType="SGA_DesarrolloModel.R_RegistroNotas" />
+          <EntitySet Name="VR_Rendimiento_A_Academ" EntityType="SGA_DesarrolloModel.VR_Rendimiento_A_Academ" />
+          <EntitySet Name="VR_Rendimiento_Periodos" EntityType="SGA_DesarrolloModel.VR_Rendimiento_Periodos" />
+          <AssociationSet Name="FK_P_Notas_P_Personas" Association="SGA_DesarrolloModel.FK_P_Notas_P_Personas">
+            <End Role="P_Personas" EntitySet="P_Personas" />
+            <End Role="P_Notas" EntitySet="P_Notas" />
+          </AssociationSet>
+          <EntitySet Name="P_NotasPublicas" EntityType="SGA_DesarrolloModel.P_NotasPublicas" />
+        </EntityContainer>
+        <EntityType Name="P_Personas">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="IdPersona" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Fallecido" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="Identificacion" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="Pasaporte" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="login_red" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Prefix" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Nombre" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="SNombre" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Genero" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="GrupoEtnico" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Fecha_Nacimiento" Type="DateTime" Precision="3" />
+          <Property Name="Pais_Nacimiento" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="zona" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="Direccion_Oficial" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="EstadoCivil" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="Sobrenombre" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="IdiomaProcedencia" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="LenguaMaterna" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="NHijos" Type="Int16" />
+          <Property Name="PEOPLE_CODE_ID" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="GOVERMENT_ID" Type="String" MaxLength="9" Unicode="false" FixedLength="true" />
+          <Property Name="PREVIOUS_ID" Type="String" MaxLength="9" Unicode="false" FixedLength="true" />
+          <Property Name="usuario" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Escolaridad" Type="Int32" Nullable="false" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="72" Unicode="true" FixedLength="false" p1:StoreGeneratedPattern="Computed" />
+          <Property Name="ApellidoNombre" Type="String" Nullable="false" MaxLength="73" Unicode="true" FixedLength="false" p1:StoreGeneratedPattern="Computed" />
+          <Property Name="Nacionalidad" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="Residente" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="P_Notas" Relationship="SGA_DesarrolloModel.FK_P_Notas_P_Personas" FromRole="P_Personas" ToRole="P_Notas" />
+        </EntityType>
+        <EntityType Name="P_Notas">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+            <PropertyRef Name="idNota" />
+          </Key>
+          <Property Type="Int32" Name="IdPersona" Nullable="false" />
+          <Property Type="Int32" Name="idNota" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TipoNota" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Area" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FechaNota" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Nota" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FechaRecordatorio" Precision="3" />
+          <Property Type="String" Name="usuario" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Fecha" Precision="3" />
+          <Property Type="Boolean" Name="Activa" />
+          <NavigationProperty Name="P_Personas" Relationship="SGA_DesarrolloModel.FK_P_Notas_P_Personas" FromRole="P_Notas" ToRole="P_Personas" />
+        </EntityType>
+        <EntityType Name="R_RegistroNotas">
+          <Key>
+            <PropertyRef Name="A_Adem" />
+            <PropertyRef Name="Trimestre" />
+            <PropertyRef Name="id_curso" />
+            <PropertyRef Name="Subtipo" />
+            <PropertyRef Name="seccion" />
+            <PropertyRef Name="Estudiante" />
+            <PropertyRef Name="Carrera" />
+          </Key>
+          <Property Type="Int32" Name="A_Adem" Nullable="false" />
+          <Property Type="String" Name="Trimestre" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="id_curso" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Subtipo" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="seccion" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Estudiante" Nullable="false" />
+          <Property Type="String" Name="Carrera" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="A_Carrera" />
+          <Property Type="Decimal" Name="Creditos" Nullable="false" Precision="6" Scale="3" />
+          <Property Type="String" Name="NotaFinal" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="Nota_Num" Nullable="false" Precision="8" Scale="4" />
+          <Property Type="DateTime" Name="F_Lim_Icomp" Precision="3" />
+          <Property Type="Decimal" Name="PP" Nullable="false" Precision="6" Scale="3" />
+          <Property Type="String" Name="NotaMedioP" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CalculoPP" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="FechaEstado" Precision="3" />
+          <Property Type="String" Name="Observaciones" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Estado_Recuperacion" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="Decimal" Name="Calif_Examen_Recup" Precision="8" Scale="4" />
+          <Property Type="String" Name="usuario_i" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Fecha_i" Precision="3" />
+          <Property Type="String" Name="usuario_act" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Fecha_act" Precision="3" />
+          <Property Type="DateTime" Name="Fecha_CreaEv" Precision="3" />
+          <Property Type="DateTime" Name="Fecha_HabilitEv" Precision="3" />
+          <Property Type="DateTime" Name="Fecha_FinEv" Precision="3" />
+          <Property Type="String" Name="EstadoEv" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="Int64" Name="IdControl" />
+          <Property Type="Decimal" Name="CreditosGanados" Nullable="false" Precision="6" Scale="3" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Int32" Name="Perdio" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Int32" Name="Recuperado" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Int32" Name="PosibleRecuperacion" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Int32" Name="ParaRecuperacion" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Int32" Name="PerdidaDefinitiva" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Int32" Name="RetiroOficial" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Decimal" Name="PuntosPP" Precision="15" Scale="7" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Decimal" Name="CreditosPP" Nullable="false" Precision="6" Scale="3" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Int32" Name="Incompleto" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Int32" Name="Matriculado" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Int32" Name="MedioPeriodo" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Int32" Name="NoRecuperado" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Int32" Name="NoRecuperacion" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Int32" Name="Aprobado" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Int32" Name="Gano" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Int32" Name="TrackingId" />
+        </EntityType>
+        <EntityType Name="VR_Rendimiento_A_Academ">
+          <Key>
+            <PropertyRef Name="Estudiante" />
+            <PropertyRef Name="Carrera" />
+            <PropertyRef Name="A_Adem" />
+          </Key>
+          <Property Type="Int32" Name="Estudiante" Nullable="false" />
+          <Property Type="String" Name="Carrera" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="A_Adem" Nullable="false" />
+          <Property Type="Int32" Name="CursosGanados" />
+          <Property Type="Decimal" Name="CreditosGanados" Precision="38" Scale="3" />
+          <Property Type="Int32" Name="CursosReprobados" />
+          <Property Type="Int32" Name="CursosPerdidos" />
+          <Property Type="Decimal" Name="zCreditosPP" Precision="38" Scale="3" />
+          <Property Type="Decimal" Name="PP" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="Creditos" Precision="38" Scale="3" />
+          <Property Type="Int32" Name="CursosPosiblesRecuperaciones" />
+          <Property Type="Int32" Name="CursosParaRecuperacion" />
+          <Property Type="Int32" Name="CursosRecuperados" />
+          <Property Type="Int32" Name="CursosRetirados" />
+          <Property Type="Int32" Name="CursosIncompletos" />
+          <Property Type="Int32" Name="CursosMatriculados" />
+        </EntityType>
+        <EntityType Name="VR_Rendimiento_Periodos">
+          <Key>
+            <PropertyRef Name="A_Adem" />
+            <PropertyRef Name="Trimestre" />
+            <PropertyRef Name="Estudiante" />
+            <PropertyRef Name="Carrera" />
+          </Key>
+          <Property Type="Int32" Name="A_Adem" Nullable="false" />
+          <Property Type="String" Name="Trimestre" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Estudiante" Nullable="false" />
+          <Property Type="String" Name="Carrera" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="CursosReprobados" />
+          <Property Type="Int32" Name="CursosGanados" />
+          <Property Type="Decimal" Name="ZPuntosPP" Precision="38" Scale="7" />
+          <Property Type="Decimal" Name="zCreditosPP" Precision="38" Scale="3" />
+          <Property Type="Decimal" Name="PP" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="CreditosGanados" Precision="38" Scale="3" />
+          <Property Type="Int32" Name="CursosRecuperados" />
+          <Property Type="Int32" Name="CursosPosiblesRecuperaciones" />
+          <Property Type="Int32" Name="CursosParaRecuperacion" />
+          <Property Type="Int32" Name="CursosPerdidos" />
+          <Property Type="Int32" Name="CursosRetirados" />
+          <Property Type="Int32" Name="CursosIncompletos" />
+          <Property Type="Int32" Name="CursosMatriculados" />
+          <Property Type="Int32" Name="CursosPendientes" />
+          <Property Type="Int32" Name="CursosNoRecuperados" />
+          <Property Type="Int32" Name="CursosNoVanRecuperacion" />
+          <Property Type="Int32" Name="CursosAprobados" />
+        </EntityType>
+        <Association Name="FK_P_Notas_P_Personas">
+          <End Type="SGA_DesarrolloModel.P_Personas" Role="P_Personas" Multiplicity="1" />
+          <End Type="SGA_DesarrolloModel.P_Notas" Role="P_Notas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="P_Personas">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="P_Notas">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="P_NotasPublicas">
+          <Key>
+            <PropertyRef Name="idNotasPublicas" />
+          </Key>
+          <Property Type="Int32" Name="idNotasPublicas" Nullable="false" />
+          <Property Type="DateTime" Name="FechaNota" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Nota" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="FechaRecordatorio" Precision="3" />
+          <Property Type="Boolean" Name="Activa" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SGA_DesarrolloModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="P_Personas">
+            <EntityTypeMapping TypeName="SGA_DesarrolloModel.P_Personas">
+              <MappingFragment StoreEntitySet="P_Personas">
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Fallecido" ColumnName="Fallecido" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+                <ScalarProperty Name="Pasaporte" ColumnName="Pasaporte" />
+                <ScalarProperty Name="login_red" ColumnName="login_red" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="SNombre" ColumnName="SNombre" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="GrupoEtnico" ColumnName="GrupoEtnico" />
+                <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+                <ScalarProperty Name="Pais_Nacimiento" ColumnName="Pais_Nacimiento" />
+                <ScalarProperty Name="zona" ColumnName="zona" />
+                <ScalarProperty Name="Direccion_Oficial" ColumnName="Direccion_Oficial" />
+                <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+                <ScalarProperty Name="Sobrenombre" ColumnName="Sobrenombre" />
+                <ScalarProperty Name="IdiomaProcedencia" ColumnName="IdiomaProcedencia" />
+                <ScalarProperty Name="LenguaMaterna" ColumnName="LenguaMaterna" />
+                <ScalarProperty Name="NHijos" ColumnName="NHijos" />
+                <ScalarProperty Name="PEOPLE_CODE_ID" ColumnName="PEOPLE_CODE_ID" />
+                <ScalarProperty Name="GOVERMENT_ID" ColumnName="GOVERMENT_ID" />
+                <ScalarProperty Name="PREVIOUS_ID" ColumnName="PREVIOUS_ID" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Escolaridad" ColumnName="Escolaridad" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="ApellidoNombre" ColumnName="ApellidoNombre" />
+                <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+                <ScalarProperty Name="Residente" ColumnName="Residente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P_Notas">
+            <EntityTypeMapping TypeName="SGA_DesarrolloModel.P_Notas">
+              <MappingFragment StoreEntitySet="P_Notas">
+                <ScalarProperty Name="Activa" ColumnName="Activa" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="FechaRecordatorio" ColumnName="FechaRecordatorio" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="FechaNota" ColumnName="FechaNota" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="TipoNota" ColumnName="TipoNota" />
+                <ScalarProperty Name="idNota" ColumnName="idNota" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_RegistroNotas">
+            <EntityTypeMapping TypeName="SGA_DesarrolloModel.R_RegistroNotas">
+              <MappingFragment StoreEntitySet="R_RegistroNotas">
+                <ScalarProperty Name="TrackingId" ColumnName="TrackingId" />
+                <ScalarProperty Name="Gano" ColumnName="Gano" />
+                <ScalarProperty Name="Aprobado" ColumnName="Aprobado" />
+                <ScalarProperty Name="NoRecuperacion" ColumnName="NoRecuperacion" />
+                <ScalarProperty Name="NoRecuperado" ColumnName="NoRecuperado" />
+                <ScalarProperty Name="MedioPeriodo" ColumnName="MedioPeriodo" />
+                <ScalarProperty Name="Matriculado" ColumnName="Matriculado" />
+                <ScalarProperty Name="Incompleto" ColumnName="Incompleto" />
+                <ScalarProperty Name="CreditosPP" ColumnName="CreditosPP" />
+                <ScalarProperty Name="PuntosPP" ColumnName="PuntosPP" />
+                <ScalarProperty Name="RetiroOficial" ColumnName="RetiroOficial" />
+                <ScalarProperty Name="PerdidaDefinitiva" ColumnName="PerdidaDefinitiva" />
+                <ScalarProperty Name="ParaRecuperacion" ColumnName="ParaRecuperacion" />
+                <ScalarProperty Name="PosibleRecuperacion" ColumnName="PosibleRecuperacion" />
+                <ScalarProperty Name="Recuperado" ColumnName="Recuperado" />
+                <ScalarProperty Name="Perdio" ColumnName="Perdio" />
+                <ScalarProperty Name="CreditosGanados" ColumnName="CreditosGanados" />
+                <ScalarProperty Name="IdControl" ColumnName="IdControl" />
+                <ScalarProperty Name="EstadoEv" ColumnName="EstadoEv" />
+                <ScalarProperty Name="Fecha_FinEv" ColumnName="Fecha_FinEv" />
+                <ScalarProperty Name="Fecha_HabilitEv" ColumnName="Fecha_HabilitEv" />
+                <ScalarProperty Name="Fecha_CreaEv" ColumnName="Fecha_CreaEv" />
+                <ScalarProperty Name="Fecha_act" ColumnName="Fecha_act" />
+                <ScalarProperty Name="usuario_act" ColumnName="usuario_act" />
+                <ScalarProperty Name="Fecha_i" ColumnName="Fecha_i" />
+                <ScalarProperty Name="usuario_i" ColumnName="usuario_i" />
+                <ScalarProperty Name="Calif_Examen_Recup" ColumnName="Calif_Examen_Recup" />
+                <ScalarProperty Name="Estado_Recuperacion" ColumnName="Estado_Recuperacion" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="FechaEstado" ColumnName="FechaEstado" />
+                <ScalarProperty Name="CalculoPP" ColumnName="CalculoPP" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="NotaMedioP" ColumnName="NotaMedioP" />
+                <ScalarProperty Name="PP" ColumnName="PP" />
+                <ScalarProperty Name="F_Lim_Icomp" ColumnName="F_Lim_Icomp" />
+                <ScalarProperty Name="Nota_Num" ColumnName="Nota_Num" />
+                <ScalarProperty Name="NotaFinal" ColumnName="NotaFinal" />
+                <ScalarProperty Name="Creditos" ColumnName="Creditos" />
+                <ScalarProperty Name="A_Carrera" ColumnName="A_Carrera" />
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="Estudiante" ColumnName="Estudiante" />
+                <ScalarProperty Name="seccion" ColumnName="seccion" />
+                <ScalarProperty Name="Subtipo" ColumnName="Subtipo" />
+                <ScalarProperty Name="id_curso" ColumnName="id_curso" />
+                <ScalarProperty Name="Trimestre" ColumnName="Trimestre" />
+                <ScalarProperty Name="A_Adem" ColumnName="A_Adem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VR_Rendimiento_A_Academ">
+            <EntityTypeMapping TypeName="SGA_DesarrolloModel.VR_Rendimiento_A_Academ">
+              <MappingFragment StoreEntitySet="VR_Rendimiento_A_Academ">
+                <ScalarProperty Name="CursosMatriculados" ColumnName="CursosMatriculados" />
+                <ScalarProperty Name="CursosIncompletos" ColumnName="CursosIncompletos" />
+                <ScalarProperty Name="CursosRetirados" ColumnName="CursosRetirados" />
+                <ScalarProperty Name="CursosRecuperados" ColumnName="CursosRecuperados" />
+                <ScalarProperty Name="CursosParaRecuperacion" ColumnName="CursosParaRecuperacion" />
+                <ScalarProperty Name="CursosPosiblesRecuperaciones" ColumnName="CursosPosiblesRecuperaciones" />
+                <ScalarProperty Name="Creditos" ColumnName="Creditos" />
+                <ScalarProperty Name="PP" ColumnName="PP" />
+                <ScalarProperty Name="zCreditosPP" ColumnName="zCreditosPP" />
+                <ScalarProperty Name="CursosPerdidos" ColumnName="CursosPerdidos" />
+                <ScalarProperty Name="CursosReprobados" ColumnName="CursosReprobados" />
+                <ScalarProperty Name="CreditosGanados" ColumnName="CreditosGanados" />
+                <ScalarProperty Name="CursosGanados" ColumnName="CursosGanados" />
+                <ScalarProperty Name="A_Adem" ColumnName="A_Adem" />
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="Estudiante" ColumnName="Estudiante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VR_Rendimiento_Periodos">
+            <EntityTypeMapping TypeName="SGA_DesarrolloModel.VR_Rendimiento_Periodos">
+              <MappingFragment StoreEntitySet="VR_Rendimiento_Periodos">
+                <ScalarProperty Name="CursosAprobados" ColumnName="CursosAprobados" />
+                <ScalarProperty Name="CursosNoVanRecuperacion" ColumnName="CursosNoVanRecuperacion" />
+                <ScalarProperty Name="CursosNoRecuperados" ColumnName="CursosNoRecuperados" />
+                <ScalarProperty Name="CursosPendientes" ColumnName="CursosPendientes" />
+                <ScalarProperty Name="CursosMatriculados" ColumnName="CursosMatriculados" />
+                <ScalarProperty Name="CursosIncompletos" ColumnName="CursosIncompletos" />
+                <ScalarProperty Name="CursosRetirados" ColumnName="CursosRetirados" />
+                <ScalarProperty Name="CursosPerdidos" ColumnName="CursosPerdidos" />
+                <ScalarProperty Name="CursosParaRecuperacion" ColumnName="CursosParaRecuperacion" />
+                <ScalarProperty Name="CursosPosiblesRecuperaciones" ColumnName="CursosPosiblesRecuperaciones" />
+                <ScalarProperty Name="CursosRecuperados" ColumnName="CursosRecuperados" />
+                <ScalarProperty Name="CreditosGanados" ColumnName="CreditosGanados" />
+                <ScalarProperty Name="PP" ColumnName="PP" />
+                <ScalarProperty Name="zCreditosPP" ColumnName="zCreditosPP" />
+                <ScalarProperty Name="ZPuntosPP" ColumnName="ZPuntosPP" />
+                <ScalarProperty Name="CursosGanados" ColumnName="CursosGanados" />
+                <ScalarProperty Name="CursosReprobados" ColumnName="CursosReprobados" />
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="Estudiante" ColumnName="Estudiante" />
+                <ScalarProperty Name="Trimestre" ColumnName="Trimestre" />
+                <ScalarProperty Name="A_Adem" ColumnName="A_Adem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P_NotasPublicas">
+            <EntityTypeMapping TypeName="SGA_DesarrolloModel.P_NotasPublicas">
+              <MappingFragment StoreEntitySet="P_NotasPublicas">
+                <ScalarProperty Name="Activa" ColumnName="Activa" />
+                <ScalarProperty Name="FechaRecordatorio" ColumnName="FechaRecordatorio" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="FechaNota" ColumnName="FechaNota" />
+                <ScalarProperty Name="idNotasPublicas" ColumnName="idNotasPublicas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

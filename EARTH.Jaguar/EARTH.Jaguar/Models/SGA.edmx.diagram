@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="71d9ab69e20d4b04a092c63954e2a39d" Name="Diagram1">
+        <EntityTypeShape EntityType="SGA_DesarrolloModel.P_Personas" Width="1.5" PointX="1.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SGA_DesarrolloModel.P_Notas" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="SGA_DesarrolloModel.R_RegistroNotas" Width="1.5" PointX="5.625" PointY="1.375" />
+        <EntityTypeShape EntityType="SGA_DesarrolloModel.VR_Rendimiento_A_Academ" Width="1.5" PointX="8" PointY="1.375" />
+        <EntityTypeShape EntityType="SGA_DesarrolloModel.VR_Rendimiento_Periodos" Width="1.5" PointX="10.375" PointY="1.375" />
+        <AssociationConnector Association="SGA_DesarrolloModel.FK_P_Notas_P_Personas" />
+        <EntityTypeShape EntityType="SGA_DesarrolloModel.P_NotasPublicas" Width="1.5" PointX="3.25" PointY="4.5" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
