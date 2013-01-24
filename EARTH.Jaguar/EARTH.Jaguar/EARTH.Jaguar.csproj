@@ -174,7 +174,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\P_Notas.cs">
+      <DependentUpon>SGA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\P_NotasPublicas.cs">
+      <DependentUpon>SGA.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\P_Personas.cs">
+      <DependentUpon>SGA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\R_RegistroNotas.cs">
       <DependentUpon>SGA.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SGA.Context.cs">
@@ -191,6 +200,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SGA.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VR_Rendimiento_A_Academ.cs">
+      <DependentUpon>SGA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VR_Rendimiento_Periodos.cs">
+      <DependentUpon>SGA.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="71d9ab69e20d4b04a092c63954e2a39d" Name="Diagram1">
-        <EntityTypeShape EntityType="SGA_DesarrolloModel.P_Personas" Width="1.5" PointX="1.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SGA_DesarrolloModel.P_Personas" Width="1.5" PointX="0.5" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SGA_DesarrolloModel.P_Notas" Width="1.5" PointX="3" PointY="0.875" />
         <EntityTypeShape EntityType="SGA_DesarrolloModel.R_RegistroNotas" Width="1.5" PointX="5.625" PointY="1.375" />
         <EntityTypeShape EntityType="SGA_DesarrolloModel.VR_Rendimiento_A_Academ" Width="1.5" PointX="8" PointY="1.375" />

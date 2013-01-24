@@ -80,7 +80,7 @@
           <Key>
             <PropertyRef Name="idNotasPublicas" />
           </Key>
-          <Property Name="idNotasPublicas" Type="int" Nullable="false" />
+          <Property Name="idNotasPublicas" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FechaNota" Type="datetime" Nullable="false" />
           <Property Name="Nota" Type="nvarchar(max)" Nullable="false" />
           <Property Name="FechaRecordatorio" Type="datetime" />

@@ -14,6 +14,11 @@ namespace EARTH.Jaguar.Models
     
     public partial class P_Personas
     {
+        public P_Personas()
+        {
+            this.P_Notas = new HashSet<P_Notas>();
+        }
+    
         public int IdPersona { get; set; }
         public string Fallecido { get; set; }
         public string Identificacion { get; set; }
@@ -44,5 +49,7 @@ namespace EARTH.Jaguar.Models
         public string ApellidoNombre { get; set; }
         public string Nacionalidad { get; set; }
         public bool Residente { get; set; }
+    
+        public virtual ICollection<P_Notas> P_Notas { get; set; }
     }
 }
