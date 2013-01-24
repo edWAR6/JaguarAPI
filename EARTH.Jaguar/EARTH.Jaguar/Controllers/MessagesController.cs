@@ -12,14 +12,17 @@ namespace EARTH.Jaguar.Controllers
     public class MessagesController : ApiController
     {
         // GET api/message
-        public IQueryable<P_NotasPublicas> Get()
+        public IEnumerable<PublicMessageModel> Get()
         {
             try
             {
                 using(Entities context = new Entities())
                 {
-                    IQueryable<P_NotasPublicas> notas;
-                    notas = context.P_NotasPublicas.Where(n => n.Activa == true);
+                    IEnumerable<PublicMessageModel> notas;
+
+                    notas = (from pm in context.P_NotasPublicas
+                        where pm.Activa == true
+                        select new PublicMessageModel{ Id= pm.idNotasPublicas, MessageDate= pm.FechaNota, Message= pm.Nota });
                     return notas;
                 }
             }

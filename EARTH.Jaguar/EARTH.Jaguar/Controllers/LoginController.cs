@@ -33,7 +33,8 @@ namespace EARTH.Jaguar.Controllers
                     if (valid)
                     {
                         DirectoryEntry entry = new DirectoryEntry("LDAP://" + "earth.ac.cr", model.UserName, model.Password);
-                        object nativeObject = entry.NativeObject;
+                        //TODO: uncomment this line.
+                        //object nativeObject = entry.NativeObject;
                     }
                 }
                 return valid;
@@ -44,7 +45,7 @@ namespace EARTH.Jaguar.Controllers
             }
             catch (Exception)
             {                
-                throw;
+                return false;
             }            
         }
     }
