@@ -10,9 +10,9 @@ namespace EARTH.Jaguar
         public static void Register(HttpConfiguration config)
         {
             config.Routes.MapHttpRoute(
-                name: "GetUserMessages",
-                routeTemplate: "api/user/{id}/messages",
-                defaults: new { id = RouteParameter.Optional, controller = "Messages", action = "GetUserMessages" }
+                name: "GetNewUserMessages",
+                routeTemplate: "api/user/{userName}/messages/{last}",
+                defaults: new { controller = "Messages", action = "GetNewUserMessages" }
             );
 
             config.Routes.MapHttpRoute(

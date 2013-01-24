@@ -12,33 +12,33 @@ namespace EARTH.Jaguar.Controllers
     public class MessagesController : ApiController
     {
         // GET api/message
-        public IEnumerable<PublicMessageModel> Get()
-        {
-            try
-            {
-                using(Entities context = new Entities())
-                {
-                    IEnumerable<PublicMessageModel> notas;
+        //public IEnumerable<PublicMessageModel> Get()
+        //{
+        //    try
+        //    {
+        //        using(Entities context = new Entities())
+        //        {
+        //            IEnumerable<PublicMessageModel> notas;
 
-                    notas = (from pm in context.P_NotasPublicas
-                        where pm.Activa == true
-                        select new PublicMessageModel{ Id= pm.idNotasPublicas, MessageDate= pm.FechaNota, Message= pm.Nota });
-                    return notas;
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+        //            notas = (from pm in context.P_NotasPublicas
+        //                where pm.Activa == true
+        //                select new PublicMessageModel{ Id= pm.idNotasPublicas, MessageDate= pm.FechaNota, Message= pm.Nota });
+        //            return notas;
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
 
-        public IEnumerable<P_Notas> GetUserMessages(string userName)
+        public IEnumerable<P_Notas> GetNewUserMessages(string userName, int last)
         {
             try
             {
                 using (Entities context = new Entities())
                 {
-                    IEnumerable<P_Notas> messages = context.P_Notas.Where(n => n.Activa == true && n.usuario == userName);
+                    IEnumerable<P_Notas> messages = context.P_Notas.Where(n => n.usuario == userName && n.idNota > last);
                     return messages;
                 }
             }
