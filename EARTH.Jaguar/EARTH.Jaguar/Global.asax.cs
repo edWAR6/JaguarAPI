@@ -19,7 +19,7 @@ namespace EARTH.Jaguar
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
-
+            HandlerConfig.RegisterHandlers(GlobalConfiguration.Configuration.MessageHandlers);
         }
     }
 }
