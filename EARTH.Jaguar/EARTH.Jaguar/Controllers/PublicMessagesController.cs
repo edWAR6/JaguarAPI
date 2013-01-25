@@ -21,7 +21,7 @@ namespace EARTH.Jaguar.Controllers
 
                 notas = (from pm in context.P_NotasPublicas
                          where pm.Activa == true && pm.idNotasPublicas > last
-                         select pm);
+                         select pm).Take(50); ;
                 return notas;
             }
             catch (Exception)
@@ -41,7 +41,7 @@ namespace EARTH.Jaguar.Controllers
 
                 notas = (from pm in context.P_NotasPublicas
                          where pm.Activa == true && pm.idNotasPublicas <= last
-                         select pm);
+                         select pm).Take(50); ;
                 return notas;
             }
             catch (Exception)

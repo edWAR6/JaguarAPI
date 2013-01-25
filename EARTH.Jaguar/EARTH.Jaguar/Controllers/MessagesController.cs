@@ -21,7 +21,7 @@ namespace EARTH.Jaguar.Controllers
                 context.Configuration.ProxyCreationEnabled = false;
                 messages = (from m in context.P_Notas
                             where m.usuario == userName && m.idNota > last
-                            select m);
+                            select m).Take(50); ;
                 return messages;
             }
             catch (Exception)
@@ -40,7 +40,7 @@ namespace EARTH.Jaguar.Controllers
                 context.Configuration.ProxyCreationEnabled = false;
                 messages = (from m in context.P_Notas
                             where m.usuario == userName && m.idNota <= last
-                            select m).Take(10);
+                            select m).Take(50);
                 return messages;
             }
             catch (Exception)
