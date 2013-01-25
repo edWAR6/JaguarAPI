@@ -23,4 +23,16 @@ namespace EARTH.Jaguar.Models
         //[Required]
         //public bool Active { get; set; }
     }
+
+    public class MessageModel
+    {
+        [Required]
+        public int Id { get; set; }
+
+        [Required]
+        public DateTime MessageDate { get; set; }
+
+        [Required]
+        public string Message { get; set; }
+    }
 }

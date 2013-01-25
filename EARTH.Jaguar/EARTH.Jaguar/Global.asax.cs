@@ -20,6 +20,7 @@ namespace EARTH.Jaguar
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
             HandlerConfig.RegisterHandlers(GlobalConfiguration.Configuration.MessageHandlers);
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
         }
     }
 }

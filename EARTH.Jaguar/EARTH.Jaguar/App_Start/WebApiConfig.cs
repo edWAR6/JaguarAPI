@@ -16,6 +16,24 @@ namespace EARTH.Jaguar
             );
 
             config.Routes.MapHttpRoute(
+                name: "GetOldUserMessages",
+                routeTemplate: "api/user/{userName}/old_messages/{last}",
+                defaults: new { controller = "Messages", action = "GetOldUserMessages" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "GetNewPublicMessages",
+                routeTemplate: "api/public_messages/{last}",
+                defaults: new { controller = "PublicMessages", action = "GetNewPublicMessages" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "GetOldPublicMessages",
+                routeTemplate: "api/old_public_messages/{last}",
+                defaults: new { controller = "PublicMessages", action = "GetOldPublicMessages" }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

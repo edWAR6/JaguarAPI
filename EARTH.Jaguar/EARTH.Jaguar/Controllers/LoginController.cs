@@ -12,6 +12,7 @@ namespace EARTH.Jaguar.Controllers
 {
     public class LoginController : ApiController
     {
+        //POST api/login
         public bool Post(LogOnModel model)
         {
             if (this.ValidateUser(model))

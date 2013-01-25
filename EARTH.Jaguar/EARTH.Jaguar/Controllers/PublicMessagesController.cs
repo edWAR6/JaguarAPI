@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EARTH.Jaguar.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,31 +10,44 @@ namespace EARTH.Jaguar.Controllers
 {
     public class PublicMessagesController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        // GET api/message
+        public IEnumerable<P_NotasPublicas> GetNewPublicMessages(int last)
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                Entities context = new Entities();
+                context.Configuration.ProxyCreationEnabled = false;
+                IEnumerable<P_NotasPublicas> notas;
+
+                notas = (from pm in context.P_NotasPublicas
+                         where pm.Activa == true && pm.idNotasPublicas > last
+                         select pm);
+                return notas;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        // GET api/message
+        public IEnumerable<P_NotasPublicas> GetOldPublicMessages(int last)
         {
-            return "value";
-        }
+            try
+            {
+                Entities context = new Entities();
+                context.Configuration.ProxyCreationEnabled = false;
+                IEnumerable<P_NotasPublicas> notas;
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
+                notas = (from pm in context.P_NotasPublicas
+                         where pm.Activa == true && pm.idNotasPublicas <= last
+                         select pm);
+                return notas;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

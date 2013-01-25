@@ -11,36 +11,18 @@ namespace EARTH.Jaguar.Controllers
 {
     public class MessagesController : ApiController
     {
-        // GET api/message
-        //public IEnumerable<PublicMessageModel> Get()
-        //{
-        //    try
-        //    {
-        //        using(Entities context = new Entities())
-        //        {
-        //            IEnumerable<PublicMessageModel> notas;
-
-        //            notas = (from pm in context.P_NotasPublicas
-        //                where pm.Activa == true
-        //                select new PublicMessageModel{ Id= pm.idNotasPublicas, MessageDate= pm.FechaNota, Message= pm.Nota });
-        //            return notas;
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //}
-
+        // GET api/user/{userName}/messages/{last}
         public IEnumerable<P_Notas> GetNewUserMessages(string userName, int last)
         {
             try
             {
-                using (Entities context = new Entities())
-                {
-                    IEnumerable<P_Notas> messages = context.P_Notas.Where(n => n.usuario == userName && n.idNota > last);
-                    return messages;
-                }
+                IEnumerable<P_Notas> messages;
+                Entities context = new Entities();
+                context.Configuration.ProxyCreationEnabled = false;
+                messages = (from m in context.P_Notas
+                            where m.usuario == userName && m.idNota > last
+                            select m);
+                return messages;
             }
             catch (Exception)
             {
@@ -48,28 +30,23 @@ namespace EARTH.Jaguar.Controllers
             }
         }
 
-        //// GET api/message/id
-        //public string Get(int id)
-        //{
-        //    return "value " + id;
-        //}
-
-        //// POST api/default1
-        //public void Post(string value)
-        //{
-        
-        //}
-
-        //// PUT api/default1/5
-        //public void Put(int id, string value)
-        //{
-
-        //}
-
-        //// DELETE api/default1/5
-        //public void Delete(int id)
-        //{
-
-        //}
+        // GET api/user/{userName}/old_messages/{last}
+        public IEnumerable<P_Notas> GetOldUserMessages(string userName, int last)
+        {
+            try
+            {
+                IEnumerable<P_Notas> messages;
+                Entities context = new Entities();
+                context.Configuration.ProxyCreationEnabled = false;
+                messages = (from m in context.P_Notas
+                            where m.usuario == userName && m.idNota <= last
+                            select m).Take(10);
+                return messages;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
