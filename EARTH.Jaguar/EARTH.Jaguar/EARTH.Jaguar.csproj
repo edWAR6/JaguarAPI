@@ -166,6 +166,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GradeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PublicMessagesController.cs" />
@@ -186,7 +187,7 @@
     <Compile Include="Models\P_Personas.cs">
       <DependentUpon>SGA.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\R_RegistroNotas.cs">
+    <Compile Include="Models\R_Estudiantes.cs">
       <DependentUpon>SGA.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SGA.Context.cs">

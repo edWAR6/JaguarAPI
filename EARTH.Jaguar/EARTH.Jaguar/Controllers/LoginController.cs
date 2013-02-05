@@ -41,12 +41,12 @@ namespace EARTH.Jaguar.Controllers
                 return valid;
             }
             catch (DirectoryServicesCOMException)
-            {               
-                return false;
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
             }
             catch (Exception)
-            {                
-                return false;
+            {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
             }            
         }
     }

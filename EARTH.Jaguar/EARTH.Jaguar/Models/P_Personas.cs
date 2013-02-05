@@ -17,6 +17,7 @@ namespace EARTH.Jaguar.Models
         public P_Personas()
         {
             this.P_Notas = new HashSet<P_Notas>();
+            this.R_Estudiantes = new HashSet<R_Estudiantes>();
         }
     
         public int IdPersona { get; set; }
@@ -51,5 +52,6 @@ namespace EARTH.Jaguar.Models
         public bool Residente { get; set; }
     
         public virtual ICollection<P_Notas> P_Notas { get; set; }
+        public virtual ICollection<R_Estudiantes> R_Estudiantes { get; set; }
     }
 }

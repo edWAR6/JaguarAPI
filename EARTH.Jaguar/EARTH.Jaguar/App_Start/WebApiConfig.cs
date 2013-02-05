@@ -34,6 +34,12 @@ namespace EARTH.Jaguar
             );
 
             config.Routes.MapHttpRoute(
+                name: "GetYearsByUser",
+                routeTemplate: "api/user/{userName}/years",
+                defaults: new { controller = "Grade", action = "Get" }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
