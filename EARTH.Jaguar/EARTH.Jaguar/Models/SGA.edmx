@@ -9,6 +9,7 @@
           <EntitySet Name="P_Notas" EntityType="SGA_DesarrolloModel.Store.P_Notas" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="P_NotasPublicas" EntityType="SGA_DesarrolloModel.Store.P_NotasPublicas" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="P_Personas" EntityType="SGA_DesarrolloModel.Store.P_Personas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="R_Cursos" EntityType="SGA_DesarrolloModel.Store.R_Cursos" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="R_Estudiantes" EntityType="SGA_DesarrolloModel.Store.R_Estudiantes" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="R_RegistroNotas" EntityType="SGA_DesarrolloModel.Store.R_RegistroNotas" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="VR_Rendimiento_A_Academ" EntityType="SGA_DesarrolloModel.Store.VR_Rendimiento_A_Academ" store:Type="Views" store:Schema="dbo" store:Name="VR_Rendimiento_A_Academ">
@@ -63,6 +64,10 @@
           <AssociationSet Name="FK_R_Estudiantes_P_Personas" Association="SGA_DesarrolloModel.Store.FK_R_Estudiantes_P_Personas">
             <End Role="P_Personas" EntitySet="P_Personas" />
             <End Role="R_Estudiantes" EntitySet="R_Estudiantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_R_RegistroNotas_R_Cursos" Association="SGA_DesarrolloModel.Store.FK_R_RegistroNotas_R_Cursos">
+            <End Role="R_Cursos" EntitySet="R_Cursos" />
+            <End Role="R_RegistroNotas" EntitySet="R_RegistroNotas" />
           </AssociationSet>
           <AssociationSet Name="FK_R_RegistroNotas_R_Estudiantes" Association="SGA_DesarrolloModel.Store.FK_R_RegistroNotas_R_Estudiantes">
             <End Role="R_Estudiantes" EntitySet="R_Estudiantes" />
@@ -129,6 +134,25 @@
           <Property Name="ApellidoNombre" Type="nvarchar" Nullable="false" MaxLength="73" StoreGeneratedPattern="Computed" />
           <Property Name="Nacionalidad" Type="nvarchar" MaxLength="6" />
           <Property Name="Residente" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="R_Cursos">
+          <Key>
+            <PropertyRef Name="id_curso" />
+          </Key>
+          <Property Name="id_curso" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="Curso" Type="varchar" MaxLength="20" />
+          <Property Name="Curso_l" Type="varchar" MaxLength="100" />
+          <Property Name="TipoCurso" Type="varchar" MaxLength="4" />
+          <Property Name="Escala" Type="int" />
+          <Property Name="Estado" Type="varchar" MaxLength="1" />
+          <Property Name="Electivo" Type="bit" />
+          <Property Name="Creditos" Type="numeric" Precision="6" Scale="3" />
+          <Property Name="Descripcion" Type="ntext" />
+          <Property Name="Nombre_publicacion" Type="varchar" MaxLength="100" />
+          <Property Name="CourseName" Type="varchar" MaxLength="100" />
+          <Property Name="Id_FormEv" Type="int" />
+          <Property Name="usuario" Type="varchar" MaxLength="15" />
+          <Property Name="Fecha" Type="datetime" />
         </EntityType>
         <EntityType Name="R_Estudiantes">
           <Key>
@@ -300,6 +324,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_R_RegistroNotas_R_Cursos">
+          <End Role="R_Cursos" Type="SGA_DesarrolloModel.Store.R_Cursos" Multiplicity="1" />
+          <End Role="R_RegistroNotas" Type="SGA_DesarrolloModel.Store.R_RegistroNotas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="R_Cursos">
+              <PropertyRef Name="id_curso" />
+            </Principal>
+            <Dependent Role="R_RegistroNotas">
+              <PropertyRef Name="id_curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_R_RegistroNotas_R_Estudiantes">
           <End Role="R_Estudiantes" Type="SGA_DesarrolloModel.Store.R_Estudiantes" Multiplicity="1" />
           <End Role="R_RegistroNotas" Type="SGA_DesarrolloModel.Store.R_RegistroNotas" Multiplicity="*" />
@@ -333,12 +369,17 @@
             <End Role="P_Personas" EntitySet="P_Personas" />
             <End Role="R_Estudiantes" EntitySet="R_Estudiantes" />
           </AssociationSet>
+          <EntitySet Name="R_Cursos" EntityType="SGA_DesarrolloModel.R_Cursos" />
           <EntitySet Name="R_RegistroNotas" EntityType="SGA_DesarrolloModel.R_RegistroNotas" />
+          <AssociationSet Name="FK_R_RegistroNotas_R_Cursos" Association="SGA_DesarrolloModel.FK_R_RegistroNotas_R_Cursos">
+            <End Role="R_Cursos" EntitySet="R_Cursos" />
+            <End Role="R_RegistroNotas" EntitySet="R_RegistroNotas" />
+          </AssociationSet>
           <AssociationSet Name="FK_R_RegistroNotas_R_Estudiantes" Association="SGA_DesarrolloModel.FK_R_RegistroNotas_R_Estudiantes">
             <End Role="R_Estudiantes" EntitySet="R_Estudiantes" />
             <End Role="R_RegistroNotas" EntitySet="R_RegistroNotas" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="P_Notas">
           <Key>
             <PropertyRef Name="IdPersona" />
@@ -512,6 +553,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="R_Cursos">
+          <Key>
+            <PropertyRef Name="id_curso" />
+          </Key>
+          <Property Type="String" Name="id_curso" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Curso" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Curso_l" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TipoCurso" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Escala" />
+          <Property Type="String" Name="Estado" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Electivo" />
+          <Property Type="Decimal" Name="Creditos" Precision="6" Scale="3" />
+          <Property Type="String" Name="Descripcion" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Nombre_publicacion" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CourseName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Id_FormEv" />
+          <Property Type="String" Name="usuario" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Fecha" Precision="3" />
+          <NavigationProperty Name="R_RegistroNotas" Relationship="SGA_DesarrolloModel.FK_R_RegistroNotas_R_Cursos" FromRole="R_Cursos" ToRole="R_RegistroNotas" />
+        </EntityType>
         <EntityType Name="R_RegistroNotas">
           <Key>
             <PropertyRef Name="A_Adem" />
@@ -568,8 +629,21 @@
           <Property Type="Int32" Name="Aprobado" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Type="Int32" Name="Gano" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Type="Int32" Name="TrackingId" />
+          <NavigationProperty Name="R_Cursos" Relationship="SGA_DesarrolloModel.FK_R_RegistroNotas_R_Cursos" FromRole="R_RegistroNotas" ToRole="R_Cursos" />
           <NavigationProperty Name="R_Estudiantes" Relationship="SGA_DesarrolloModel.FK_R_RegistroNotas_R_Estudiantes" FromRole="R_RegistroNotas" ToRole="R_Estudiantes" />
         </EntityType>
+        <Association Name="FK_R_RegistroNotas_R_Cursos">
+          <End Type="SGA_DesarrolloModel.R_Cursos" Role="R_Cursos" Multiplicity="1" />
+          <End Type="SGA_DesarrolloModel.R_RegistroNotas" Role="R_RegistroNotas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="R_Cursos">
+              <PropertyRef Name="id_curso" />
+            </Principal>
+            <Dependent Role="R_RegistroNotas">
+              <PropertyRef Name="id_curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_R_RegistroNotas_R_Estudiantes">
           <End Type="SGA_DesarrolloModel.R_Estudiantes" Role="R_Estudiantes" Multiplicity="1" />
           <End Type="SGA_DesarrolloModel.R_RegistroNotas" Role="R_RegistroNotas" Multiplicity="*" />
@@ -731,6 +805,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="R_Cursos">
+            <EntityTypeMapping TypeName="SGA_DesarrolloModel.R_Cursos">
+              <MappingFragment StoreEntitySet="R_Cursos">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="Id_FormEv" ColumnName="Id_FormEv" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="Nombre_publicacion" ColumnName="Nombre_publicacion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Creditos" ColumnName="Creditos" />
+                <ScalarProperty Name="Electivo" ColumnName="Electivo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Escala" ColumnName="Escala" />
+                <ScalarProperty Name="TipoCurso" ColumnName="TipoCurso" />
+                <ScalarProperty Name="Curso_l" ColumnName="Curso_l" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="id_curso" ColumnName="id_curso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="R_RegistroNotas">
             <EntityTypeMapping TypeName="SGA_DesarrolloModel.R_RegistroNotas">
               <MappingFragment StoreEntitySet="R_RegistroNotas">
@@ -783,7 +877,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

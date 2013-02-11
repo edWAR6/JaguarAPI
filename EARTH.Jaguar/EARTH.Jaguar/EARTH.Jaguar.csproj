@@ -190,6 +190,9 @@
     <Compile Include="Models\P_Personas.cs">
       <DependentUpon>SGA.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\R_Cursos.cs">
+      <DependentUpon>SGA.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\R_Estudiantes.cs">
       <DependentUpon>SGA.tt</DependentUpon>
     </Compile>

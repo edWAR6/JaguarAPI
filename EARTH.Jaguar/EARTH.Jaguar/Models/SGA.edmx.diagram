@@ -13,9 +13,11 @@
         <EntityTypeShape EntityType="SGA_DesarrolloModel.VR_Rendimiento_Periodos" Width="2.25" PointX="14.625" PointY="7.125" />
         <AssociationConnector Association="SGA_DesarrolloModel.FK_P_Notas_P_Personas" />
         <AssociationConnector Association="SGA_DesarrolloModel.FK_R_Estudiantes_P_Personas" />
-        <EntityTypeShape EntityType="SGA_DesarrolloModel.R_RegistroNotas" Width="1.5" PointX="8.8072829511050532" PointY="30.921562730763835" />
+        <EntityTypeShape EntityType="SGA_DesarrolloModel.R_Cursos" Width="1.5" PointX="8.89105964307257" PointY="17.481210329328295" />
+        <EntityTypeShape EntityType="SGA_DesarrolloModel.R_RegistroNotas" Width="1.5" PointX="6.125" PointY="12.125" />
+        <AssociationConnector Association="SGA_DesarrolloModel.FK_R_RegistroNotas_R_Cursos" />
         <AssociationConnector Association="SGA_DesarrolloModel.FK_R_RegistroNotas_R_Estudiantes" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

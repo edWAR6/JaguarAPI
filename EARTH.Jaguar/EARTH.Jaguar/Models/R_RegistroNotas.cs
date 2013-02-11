@@ -61,6 +61,7 @@ namespace EARTH.Jaguar.Models
         public int Gano { get; set; }
         public Nullable<int> TrackingId { get; set; }
     
+        public virtual R_Cursos R_Cursos { get; set; }
         public virtual R_Estudiantes R_Estudiantes { get; set; }
     }
 }

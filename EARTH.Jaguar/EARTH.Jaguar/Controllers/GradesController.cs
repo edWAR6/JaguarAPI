@@ -36,16 +36,18 @@ namespace EARTH.Jaguar.Controllers
         }
 
         // GET api/user/ealpizar/year/2013/period/001/Grades
-        public R_RegistroNotas GetGrades(string userName, int year, string period)
+        public IEnumerable<R_RegistroNotas> GetGrades(string userName, int year, string period)
         {
             db.Configuration.ProxyCreationEnabled = false;
-            R_RegistroNotas grades = (from g in db.R_RegistroNotas
-                                       join s in db.R_Estudiantes
-                                           on g.Estudiante equals s.IdPersona
-                                       where s.usuario == userName
-                                       && g.A_Adem == year
-                                       && g.Trimestre == period
-                                       select g).Take(1).SingleOrDefault();
+
+            var grades = (from g in db.R_RegistroNotas.Include(g => g.R_Cursos)
+                          join s in db.R_Estudiantes
+                              on g.Estudiante equals s.IdPersona
+                          where s.usuario == userName
+                          && g.A_Adem == year
+                          && g.Trimestre == period
+                          select g);
+                          
             return grades;
         }
 
