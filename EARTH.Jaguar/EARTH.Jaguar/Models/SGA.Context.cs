@@ -31,5 +31,6 @@ namespace EARTH.Jaguar.Models
         public DbSet<R_Estudiantes> R_Estudiantes { get; set; }
         public DbSet<VR_Rendimiento_A_Academ> VR_Rendimiento_A_Academ { get; set; }
         public DbSet<VR_Rendimiento_Periodos> VR_Rendimiento_Periodos { get; set; }
+        public DbSet<R_RegistroNotas> R_RegistroNotas { get; set; }
     }
 }

@@ -36,7 +36,19 @@ namespace EARTH.Jaguar
             config.Routes.MapHttpRoute(
                 name: "GetYearsByUser",
                 routeTemplate: "api/user/{userName}/years",
-                defaults: new { controller = "Grade", action = "Get" }
+                defaults: new { controller = "Years", action = "GetYearsByUser" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "GetPeriodsByYearAndUser",
+                routeTemplate: "api/user/{userName}/year/{year}/periods",
+                defaults: new { controller = "Periods", action = "GetPeriodsByYearAndUser" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "GetGrades",
+                routeTemplate: "api/user/{userName}/year/{year}/period/{period}/grades",
+                defaults: new { controller = "Grades", action = "GetGrades" }
             );
 
             config.Routes.MapHttpRoute(

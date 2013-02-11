@@ -13,6 +13,8 @@
         <EntityTypeShape EntityType="SGA_DesarrolloModel.VR_Rendimiento_Periodos" Width="2.25" PointX="14.625" PointY="7.125" />
         <AssociationConnector Association="SGA_DesarrolloModel.FK_P_Notas_P_Personas" />
         <AssociationConnector Association="SGA_DesarrolloModel.FK_R_Estudiantes_P_Personas" />
+        <EntityTypeShape EntityType="SGA_DesarrolloModel.R_RegistroNotas" Width="1.5" PointX="8.8072829511050532" PointY="30.921562730763835" />
+        <AssociationConnector Association="SGA_DesarrolloModel.FK_R_RegistroNotas_R_Estudiantes" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

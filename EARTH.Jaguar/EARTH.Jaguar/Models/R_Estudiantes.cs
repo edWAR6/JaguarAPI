@@ -14,6 +14,11 @@ namespace EARTH.Jaguar.Models
     
     public partial class R_Estudiantes
     {
+        public R_Estudiantes()
+        {
+            this.R_RegistroNotas = new HashSet<R_RegistroNotas>();
+        }
+    
         public int IdPersona { get; set; }
         public string Carrera { get; set; }
         public Nullable<int> Generacion { get; set; }
@@ -39,5 +44,6 @@ namespace EARTH.Jaguar.Models
         public Nullable<int> TrackingId { get; set; }
     
         public virtual P_Personas P_Personas { get; set; }
+        public virtual ICollection<R_RegistroNotas> R_RegistroNotas { get; set; }
     }
 }
