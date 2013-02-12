@@ -10,7 +10,7 @@ namespace EARTH.Jaguar.Controllers
 {
     public class PublicMessagesController : ApiController
     {
-        // GET api/message
+        // GET api/public_messages/{last}
         public IEnumerable<P_NotasPublicas> GetNewPublicMessages(int last)
         {
             try
@@ -30,7 +30,7 @@ namespace EARTH.Jaguar.Controllers
             }
         }
 
-        // GET api/message
+        // GET api/old_public_messages/{last}
         public IEnumerable<P_NotasPublicas> GetOldPublicMessages(int last)
         {
             try
