@@ -299,6 +299,8 @@
       <DependentUpon>SGA.edmx</DependentUpon>
       <LastGenOutput>SGA.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\EARTH local.pubxml" />
+    <None Include="Properties\PublishProfiles\EARTH.pubxml" />
     <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />

@@ -6,12 +6,15 @@ using System.Net.Http;
 using System.Web.Http;
 using EARTH.Jaguar.Models;
 using System.Collections;
+using EARTH.Jaguar.Filters;
 
 namespace EARTH.Jaguar.Controllers
 {
     public class MessagesController : ApiController
     {
         // GET api/user/{userName}/messages/{last}
+        [Authorize]
+        [InitializeSimpleMembership]
         public IEnumerable<P_Notas> GetNewUserMessages(string userName, int last)
         {
             try
@@ -31,6 +34,8 @@ namespace EARTH.Jaguar.Controllers
         }
 
         // GET api/user/{userName}/old_messages/{last}
+        [Authorize]
+        [InitializeSimpleMembership]
         public IEnumerable<P_Notas> GetOldUserMessages(string userName, int last)
         {
             try

@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using EARTH.Jaguar.Filters;
 using EARTH.Jaguar.Models;
 
 namespace EARTH.Jaguar.Controllers
@@ -17,6 +18,8 @@ namespace EARTH.Jaguar.Controllers
         private Entities db = new Entities();
 
         // GET api/Grades
+        [Authorize]
+        [InitializeSimpleMembership]
         public IEnumerable<R_RegistroNotas> GetR_RegistroNotas()
         {
             var r_registronotas = db.R_RegistroNotas.Include(r => r.R_Estudiantes);
@@ -24,6 +27,8 @@ namespace EARTH.Jaguar.Controllers
         }
 
         // GET api/Grades/5
+        [Authorize]
+        [InitializeSimpleMembership]
         public R_RegistroNotas GetR_RegistroNotas(int id)
         {
             R_RegistroNotas r_registronotas = db.R_RegistroNotas.Find(id);
@@ -36,6 +41,8 @@ namespace EARTH.Jaguar.Controllers
         }
 
         // GET api/user/ealpizar/year/2013/period/001/Grades
+        [Authorize]
+        [InitializeSimpleMembership]
         public IEnumerable<R_RegistroNotas> GetGrades(string userName, int year, string period)
         {
             db.Configuration.ProxyCreationEnabled = false;

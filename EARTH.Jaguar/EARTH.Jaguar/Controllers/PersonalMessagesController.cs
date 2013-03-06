@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using EARTH.Jaguar.Filters;
 using EARTH.Jaguar.Models;
 
 namespace EARTH.Jaguar.Controllers
@@ -17,6 +18,8 @@ namespace EARTH.Jaguar.Controllers
         private Entities db = new Entities();
 
         // GET api/PersonalMessages
+        [Authorize]
+        [InitializeSimpleMembership]
         public IEnumerable<P_Notas> GetP_Notas()
         {
             var p_notas = db.P_Notas.Include(p => p.P_Personas);
@@ -24,6 +27,8 @@ namespace EARTH.Jaguar.Controllers
         }
 
         // GET api/PersonalMessages/5
+        [Authorize]
+        [InitializeSimpleMembership]
         public P_Notas GetP_Notas(int id)
         {
             P_Notas p_notas = db.P_Notas.Find(id);
@@ -36,6 +41,8 @@ namespace EARTH.Jaguar.Controllers
         }
 
         // PUT api/PersonalMessages/5
+        [Authorize]
+        [InitializeSimpleMembership]
         public HttpResponseMessage PutP_Notas(int id, P_Notas p_notas)
         {
             if (ModelState.IsValid && id == p_notas.IdPersona)
@@ -60,6 +67,8 @@ namespace EARTH.Jaguar.Controllers
         }
 
         // POST api/PersonalMessages
+        [Authorize]
+        [InitializeSimpleMembership]
         public HttpResponseMessage PostP_Notas(P_Notas p_notas)
         {
             if (ModelState.IsValid)
@@ -78,6 +87,8 @@ namespace EARTH.Jaguar.Controllers
         }
 
         // DELETE api/PersonalMessages/5
+        [Authorize]
+        [InitializeSimpleMembership]
         public HttpResponseMessage DeleteP_Notas(int id)
         {
             P_Notas p_notas = db.P_Notas.Find(id);

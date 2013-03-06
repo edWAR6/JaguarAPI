@@ -15,6 +15,7 @@ namespace EARTH.Jaguar.Controllers
 {
     [Authorize]
     [InitializeSimpleMembership]
+    [All
     public class AccountController : Controller
     {
         //

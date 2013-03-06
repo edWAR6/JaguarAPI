@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using EARTH.Jaguar.Filters;
 using EARTH.Jaguar.Models;
 
 namespace EARTH.Jaguar.Controllers
@@ -17,12 +18,16 @@ namespace EARTH.Jaguar.Controllers
         private Entities db = new Entities();
 
         // GET api/Periods
+        [Authorize]
+        [InitializeSimpleMembership]
         public IEnumerable<VR_Rendimiento_Periodos> GetVR_Rendimiento_Periodos()
         {
             return db.VR_Rendimiento_Periodos.AsEnumerable();
         }
 
         // GET api/Periods/5
+        [Authorize]
+        [InitializeSimpleMembership]
         public VR_Rendimiento_Periodos GetVR_Rendimiento_Periodos(int id)
         {
             VR_Rendimiento_Periodos vr_rendimiento_periodos = db.VR_Rendimiento_Periodos.Find(id);
@@ -35,6 +40,8 @@ namespace EARTH.Jaguar.Controllers
         }
 
         // GET api/user/ealpizar/year/2013/Periods
+        [Authorize]
+        [InitializeSimpleMembership]
         public IEnumerable<VR_Rendimiento_Periodos> GetPeriodsByYearAndUser(string userName, int year)
         {
             var periods = (from p in db.VR_Rendimiento_Periodos
