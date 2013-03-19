@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using EARTH.Jaguar.Resources;
 
 namespace EARTH.Jaguar
 {
@@ -21,6 +22,9 @@ namespace EARTH.Jaguar
             AuthConfig.RegisterAuth();
             HandlerConfig.RegisterHandlers(GlobalConfiguration.Configuration.MessageHandlers);
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+
+            GlobalConfiguration.Configuration.MessageHandlers.Add(new CorsHandler());
+            GlobalConfiguration.Configuration.Filters.Add(new ClientErrorHandler());
         }
     }
 }

@@ -14,8 +14,7 @@ using EARTH.Jaguar.Models;
 namespace EARTH.Jaguar.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
-    [All
+    [InitializeSimpleMembership]    
     public class AccountController : Controller
     {
         //

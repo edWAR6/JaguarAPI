@@ -7,47 +7,57 @@ using System.Web.Http;
 using EARTH.Jaguar.Models;
 using System.DirectoryServices;
 using System.Web.Security;
+using System.Web.Script.Services;
+using System.Diagnostics;
 
 namespace EARTH.Jaguar.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : ApiController
     {
         //POST api/login
-        public bool Post(LogOnModel model)
+        [AllowAnonymous]
+        
+        public HttpResponseMessage Post(LogOnModel model)
         {
-            if (this.ValidateUser(model))
-            {
-                FormsAuthentication.SetAuthCookie(model.UserName,true);
-                return true;
+            try 
+	        {	        
+                if (this.ValidateUser(model))
+                {
+                    FormsAuthentication.SetAuthCookie(model.UserName,true);
+                    return Request.CreateResponse(HttpStatusCode.OK, true);
+                }
+                return Request.CreateResponse(HttpStatusCode.OK, false);
             }
-            return false;
+            catch (DirectoryServicesCOMException dse)
+            {
+                HttpError error = new HttpError(dse.Message.Replace("\n", " ").Replace("\r", " ").Replace("\t", " "));
+                return Request.CreateResponse(HttpStatusCode.Unauthorized, error);
+            }
+            catch (Exception ex)
+            {
+                HttpError error = new HttpError(ex.Message.Replace("\n", " ").Replace("\r", " ").Replace("\t", " "));
+                EventLog log = new EventLog();
+                log.Source = "Jaguar_Mobile";
+                log.WriteEntry(ex.Message);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, error);
+            }
         }
 
         private bool ValidateUser(LogOnModel model)
         {
             bool valid = false;
-            try
+            using (Entities context = new Entities())
             {
-                using (Entities context = new Entities())
+                valid = context.P_Personas.Count(p => p.usuario == model.UserName) > 0;
+                if (valid)
                 {
-                    valid = context.P_Personas.Count(p => p.usuario == model.UserName) > 0;
-                    if (valid)
-                    {
-                        DirectoryEntry entry = new DirectoryEntry("LDAP://" + "earth.ac.cr", model.UserName, model.Password);
-                        //TODO: uncomment this line in server.
-                        object nativeObject = entry.NativeObject;
-                    }
+                    DirectoryEntry entry = new DirectoryEntry("LDAP://" + "earth.ac.cr", model.UserName, model.Password);
+                    //TODO: uncomment this line in server.
+                    object nativeObject = entry.NativeObject;
                 }
-                return valid;
             }
-            catch (DirectoryServicesCOMException)
-            {
-                throw new HttpResponseException(HttpStatusCode.Unauthorized);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
-            }            
+            return valid;                        
         }
     }
 }

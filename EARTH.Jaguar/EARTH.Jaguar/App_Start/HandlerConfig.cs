@@ -12,7 +12,8 @@ namespace EARTH.Jaguar
     {
         public static void RegisterHandlers(Collection<DelegatingHandler> handlers)
         {
-            handlers.Add(new CorsMessageHandler());
+            //handlers.Add(new CorsMessageHandler());
+            //handlers.Add(new ClientErrorHandler());
         }
     }
 }
