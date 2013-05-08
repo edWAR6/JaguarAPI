@@ -17,7 +17,6 @@ namespace EARTH.Jaguar.Controllers
     {
         //POST api/login
         [AllowAnonymous]
-        
         public HttpResponseMessage Post(LogOnModel model)
         {
             try 
