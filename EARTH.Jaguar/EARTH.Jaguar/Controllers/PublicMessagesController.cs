@@ -34,7 +34,7 @@ namespace EARTH.Jaguar.Controllers
         }
 
         // GET api/old_public_messages/{last}
-        [Authorize]
+        // [Authorize]
         [InitializeSimpleMembership]
         public IEnumerable<P_NotasPublicas> GetOldPublicMessages(int last)
         {
